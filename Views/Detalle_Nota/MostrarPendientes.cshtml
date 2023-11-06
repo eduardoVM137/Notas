@@ -1,0 +1,144 @@
+﻿@model List<Detalle_Nota>
+
+
+@{
+    ViewData["Title"] = "MostrarPendientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        Mis Notas
+    </div>
+    <div class="card-body">
+
+        <button type="button" class="btn btn-success btn-sm boton-nuevo-dtnota">Nueva Nota</button>
+
+
+
+        <hr />
+        <div class="d-flex flex-wrap">
+            @foreach (var item in Model)
+            {
+                <div class="card border-@(
+        item.strEstado == "sin empezar" ? "danger" :
+        item.strEstado == "en progreso" ? "primary" :
+        item.strEstado == "finalizado" ? "success" : "secondary") mb-3 mx-2" style="max-width: 18rem;">
+                    @if (!ViewBag.VerDetalle)
+                    {
+                        <div class="card-header">Titulo Nota: @item.refNnota.strTitulo</div>
+                    }
+                    <div class="card-body text-@(
+            item.strEstado == "sin empezar" ? "danger" :
+            item.strEstado == "en progreso" ? "primary" :
+            item.strEstado == "finalizado" ? "success" : "secondary")">
+                        <h5 class="card-title">@item._strDescripcion</h5>
+                    </div>
+
+                    <div class="card-footer">
+                        @if (item.strEstado == "sin empezar")
+                        {
+                            <button class="btn btn-danger btn-sm boton-cambiar-dtnota"
+                                    data-iddt_nota="@item._intidDetalle_Nota"
+                                    data-descripcion="@item._strDescripcion">
+                                Empezar
+                            </button>
+                        }
+                        else if (item.strEstado == "en progreso")
+                        {
+                            <button class="btn btn-primary btn-sm boton-cambiar-dtnota"
+                                    data-iddt_nota="@item._intidDetalle_Nota"
+                                    data-descripcion="@item._strDescripcion">
+                                Finalizar
+                            </button>
+                        }
+                        else if (item.strEstado == "finalizado")
+                        {
+                            <button class="btn btn-success btn-sm boton-cambiar-dtnota"
+                                    data-iddt_nota="@item._intidDetalle_Nota"
+                                    data-descripcion="@item._strDescripcion">
+                                Reiniciar
+                            </button>
+                        }
+
+                        <a class="btn btn-danger btn-circle boton-eliminar-dtnota" data-iddt_nota="@item._intidDetalle_Nota"
+                           data-descripcion="@item._strDescripcion">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            }
+
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDtNota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal Nota</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+      
+
+                <div class="mb-3">
+                    <label class="form-label">Nota</label>
+
+                    <select class="form-select" id="cboNota">
+                        @foreach (var opcion in ViewBag.ListaNota)
+                        {
+                            <option value=@opcion.intidNota>@opcion.strTitulo</option>
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Usuario</label>
+
+                    <select class="form-select" id="cboUsuario">
+                       @foreach (var opcion in ViewBag.ListaUsuario)
+                        {
+                            <option value=@opcion.intidUsuario>@opcion.strNombre</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- parte dtNota -->
+                <div class="mb-3">
+                    <label class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="txtDescripcion" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Fecha</label>
+                    <input type="datetime" class="form-control" id="dtFecha" autocomplete="off">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Imagen</label>
+                    <input type="text" class="form-control" id="txtImagen" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Realizado</label>
+                    <input type="checkbox" class="form-control" id="txtRealizado" autocomplete="off">
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary boton-guardar-cambios-dtnota">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+    </div>
+@section Scripts{
+    <script src="~/js/detalle_nota.js"></script>
+
+}

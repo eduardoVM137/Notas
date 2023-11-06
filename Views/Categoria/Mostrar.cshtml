@@ -1,0 +1,249 @@
+﻿@*@model List<Categoria>*@
+@{
+    ViewData["Title"] = "Mostrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    
+@*    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="/js/categoria.js"></script>*@
+</head>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.js'></script>
+
+<div id='calendar-container'>
+    <div id='calendar'></div>
+</div>
+
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            height: '100%',
+            expandRows: true,
+            slotMinTime: '08:00',
+            slotMaxTime: '20:00',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            },
+            initialView: 'dayGridMonth',
+            initialDate: '2023-01-12',
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            selectable: true,
+            nowIndicator: true,
+            dayMaxEvents: true, // allow "more" link when too many events
+            events: [
+                {
+                    title: 'All Day Event',
+                    start: '2023-01-01',
+                },
+                {
+                    title: 'Long Event',
+                    start: '2023-01-07',
+                    end: '2023-01-10'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2023-01-09T16:00:00'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2023-01-16T16:00:00'
+                },
+                {
+                    title: 'Conference',
+                    start: '2023-01-11',
+                    end: '2023-01-13'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2023-01-12T10:30:00',
+                    end: '2023-01-12T12:30:00'
+                },
+                {
+                    title: 'Lunch',
+                    start: '2023-01-12T12:00:00'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2023-01-12T14:30:00'
+                },
+                {
+                    title: 'Happy Hour',
+                    start: '2023-01-12T17:30:00'
+                },
+                {
+                    title: 'Dinner',
+                    start: '2023-01-12T20:00:00'
+                },
+                {
+                    title: 'Birthday Party',
+                    start: '2023-01-13T07:00:00'
+                },
+                {
+                    title: 'Click for Google',
+                    url: 'http://google.com/',
+                    start: '2023-01-28'
+                }
+            ]
+        });
+
+        calendar.render();
+    });
+
+</script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+        });
+        calendar.render();
+    });
+
+</script>
+<style>
+
+    html, body {
+        /*overflow: hidden; /* don't do scrollbars */*/
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-size: 14px;
+    }
+
+    #calendar-container {
+        /*position: fixed;*/
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .fc-header-toolbar {
+        /*
+        the calendar will be butting up against the edges,
+        but let's scoot in the header's buttons
+        */
+        padding-top: 1em;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+</style>
+@*
+
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                  @foreach (var item in Model)
+                            {
+              
+
+            <tr>
+                <td>@item.intIdCategoria</td>
+                <td>@item.strTitulo</td>
+                <td>@item.strDescripcion</td>
+                <td>
+
+                    <button class="btn btn-primary btn-sm boton-editar-categoria"
+                            data-idcategoria="@item.intIdCategoria"
+                            data-titulo="@item.strTitulo"
+                            data-descripcion="@item.strDescripcion">
+                        Editar
+                    </button>
+
+                    <button class="btn btn-danger btn-sm boton-eliminar-categoria"
+                            data-idcategoria="@item.intIdCategoria"
+                            data-titulo="@item.strTitulo">
+                        Eliminar
+                    </button>
+
+                </td>
+            </tr>
+
+
+        }
+            </tbody>
+            <tfoot>
+                <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Accion</th>
+                </tr>
+            </tfoot>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modalcare -->
+<div class="modal fade" id="modalCategoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal Nota</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+          
+
+                <div class="mb-3">
+                    <label class="form-label">Titulo</label>
+                    <input type="text" class="form-control" id="txtTitulo" autocomplete="off">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="txtDescripcion" autocomplete="off">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary boton-guardar-cambios-categoria">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{ 
+    
+    <script src="~/js/categoria.js"></script>
+}*@
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script defer src="https://fullcalendar.io/js/fullcalendar-2.2.5/fullcalendar.min.js"></script> 
