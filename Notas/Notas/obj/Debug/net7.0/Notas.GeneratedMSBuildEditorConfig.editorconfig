@@ -9,37 +9,77 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Notas
 build_property.RootNamespace = Notas
-build_property.ProjectDir = C:\Users\Kraken\Documents\Proyectos\C#\Notas CRUD\Notas\Notas\
+build_property.ProjectDir = x:\Notas\Notas\Notas\Notas\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Kraken\Documents\Proyectos\C#\Notas CRUD\Notas\Notas
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = x:\Notas\Notas\Notas\Notas
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Kraken/Documents/Proyectos/C\#/Notas CRUD/Notas/Notas/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[x:/Notas/Notas/Notas/Notas/Views/Calendario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsZW5kYXJpb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kraken/Documents/Proyectos/C\#/Notas CRUD/Notas/Notas/Views/Home/Privacy.cshtml]
+[x:/Notas/Notas/Notas/Notas/Views/Categoria/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXE1vc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/Detalle_Nota/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZV9Ob3RhXE1vc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/Detalle_Nota/MostrarPendientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZV9Ob3RhXE1vc3RyYXJQZW5kaWVudGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kraken/Documents/Proyectos/C\#/Notas CRUD/Notas/Notas/Views/Shared/Error.cshtml]
+[x:/Notas/Notas/Notas/Notas/Views/Login/Mantemiento.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTWFudGVtaWVudG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/Login/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTW9zdHJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/Nota/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90YVxNb3N0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kraken/Documents/Proyectos/C\#/Notas CRUD/Notas/Notas/Views/Shared/_ValidationScriptsPartial.cshtml]
+[x:/Notas/Notas/Notas/Notas/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/Shared/_Head.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/Shared/_Slidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TbGlkZWJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kraken/Documents/Proyectos/C\#/Notas CRUD/Notas/Notas/Views/_ViewImports.cshtml]
+[x:/Notas/Notas/Notas/Notas/Views/Usuario/Mostrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xNb3N0cmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[x:/Notas/Notas/Notas/Notas/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kraken/Documents/Proyectos/C\#/Notas CRUD/Notas/Notas/Views/_ViewStart.cshtml]
+[x:/Notas/Notas/Notas/Notas/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kraken/Documents/Proyectos/C\#/Notas CRUD/Notas/Notas/Views/Shared/_Layout.cshtml]
+[x:/Notas/Notas/Notas/Notas/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-gsr7ngm3is

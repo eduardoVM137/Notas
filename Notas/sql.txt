@@ -1,0 +1,287 @@
+-- Creación de las tablas
+
+CREATE TABLE Login (
+    idLogin INT PRIMARY KEY AUTO_INCREMENT,
+    idUsuario INT NOT NULL,
+    Usuario VARCHAR(50) NOT NULL,
+    Contrasena VARCHAR(50) NOT NULL,
+    -- Otras columnas que puedas necesitar para el login, como fecha de creación, etc.
+);
+
+CREATE TABLE Usuario (
+    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(50) NOT NULL,
+    Correo VARCHAR(100) NOT NULL,
+    -- Otras columnas que puedas necesitar para el usuario.
+);
+
+CREATE TABLE Categoria (
+    idCategoria INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(50) NOT NULL,
+    -- Otras columnas que puedas necesitar para la categoría.
+);
+
+CREATE TABLE Nota (
+    idNota INT PRIMARY KEY AUTO_INCREMENT,
+    idUsuario_Creador INT NOT NULL,
+    idCategoria INT NOT NULL,
+    Titulo VARCHAR(100) NOT NULL,
+    Contenido VARCHAR(MAX) NOT NULL,
+    -- Otras columnas que puedas necesitar para la nota.
+    FOREIGN KEY (idUsuario_Creador) REFERENCES Usuario (idUsuario),
+    FOREIGN KEY (idCategoria) REFERENCES Categoria (idCategoria)
+);
+
+CREATE TABLE Detalle_Nota (
+    idDetalle_Nota INT PRIMARY KEY AUTO_INCREMENT,
+    idNota INT NOT NULL,
+    idUsuario INT NOT NULL,
+    -- Otras columnas que puedas necesitar para el detalle de la nota.
+    FOREIGN KEY (idNota) REFERENCES Nota (idNota),
+    FOREIGN KEY (idUsuario) REFERENCES Usuario (idUsuario)
+);
+
+
+
+
+
+
+tengo las siguientes tablas en sql:
+Login:
+idLogin int,idUsuario int,Usuario varchar(50),Contraseña varchar(50)
+Usuario:
+idUsuario int,Nombre varchar(100),Email varchar(150) ,Foto image,Fecha_Registro date
+Nota:
+idNota int,idUsuario_Creador int,idCategoria int,Fecha_Creacion datetime,Titulo varchar(100),Comentario varchar(150)
+Detalle_Nota :
+idDetalle_Nota int,idNota int,idUsuario int,Descripcion varchar(250),Imagen image
+Categoria:
+idCategoria int,Titulo varchar(150),Descripcion varchar(250)
+
+las relaciones son
+-Login con Usuario por medio de idUsuario
+-Nota con Usuario por idUsuario_Creador y idUsuario 
+-Nota con Detalle_Nota por idNota
+-Nota con Categoria por idCategoria
+
+los campos autoincrementables son:
+idLogin
+idUsuario
+idNota
+idDetalle_Nota
+idCategoria
+
+En base a esto crea los siguientes procedimientos almacenados:
+Mostrar Las notas de un usuario creadas,Mostrar las notas que puede ver un usuario
+validar el login en base el usuario y contraseña
+Mostrar Usuarios
+
+-crear nota,crear detalle nota,crear categoria,crear usuario,crear login
+-editar nota,editar detalle nota,editar categoria,editar usuario,editar login
+-Eliminar nota,Eliminar detalle nota,Eliminar categoria,Eliminar usuario,Eliminar login
+
+la nomenclatura para nombrar los procedimientos sera la siguiente ejemplo:
+para crear :spInsertar_Nota,spInsertar_Categoria.
+Para editar igual pero cambiando el spIntertar por spEditar
+Para eliminar cambiar por spEliminar 
+Para las otras spMostrar o spBuscar
+
+----
+-- Procedimientos para Mostrar
+
+CREATE PROCEDURE spMostrar_Notas_Por_UsuarioCreador
+    @idUsuario_Creador INT
+	AS
+	BEGIN
+		SELECT *
+		FROM Nota
+		WHERE idUsuario_Creador = @idUsuario_Creador;
+	END
+
+CREATE PROCEDURE spMostrar_Notas_Por_Usuario
+    @idUsuario INT
+	AS
+	BEGIN
+		SELECT  n.* FROM Nota n
+		JOIN Detalle_Nota dn ON n.idNota = dn.idNota
+		WHERE n.idUsuario_Creador = @idUsuario OR dn.idUsuario = @idUsuario;
+	END
+
+CREATE PROCEDURE spValidar_Login
+    @usuario VARCHAR(50),
+    @contrasena VARCHAR(50)
+	AS
+	BEGIN
+		SELECT idLogin, idUsuario
+		FROM Login
+		WHERE Usuario = @usuario AND Contraseña = @contrasena;
+	END
+
+CREATE PROCEDURE spMostrar_Usuarios
+AS
+BEGIN
+    SELECT *
+    FROM Usuario;
+END
+
+
+-- Procedimientos para Crear
+
+CREATE PROCEDURE spInsertar_Nota
+    @idUsuario_Creador INT,
+    @idCategoria INT,
+    @titulo VARCHAR(100),
+    @comentario VARCHAR(MAX)
+	AS
+	BEGIN
+		INSERT INTO Nota (idUsuario_Creador, idCategoria, Titulo, Comentario)
+		VALUES (@idUsuario_Creador, @idCategoria, @titulo, @comentario);
+	END
+
+create  PROCEDURE spInsertar_DetalleNota
+	@idNota INT,
+	@idUsuario INT,
+	@descripcion VARCHAR(MAX),
+	@image image,
+	@fecha datetime
+	AS
+	BEGIN
+		INSERT INTO Detalle_Nota (idNota, idUsuario,Descripcion,Imagen,Fecha)
+		VALUES (@idNota, @idUsuario,@descripcion,@image,@fecha);
+	END
+
+CREATE PROCEDURE spInsertar_Categoria
+	@titulo VARCHAR(50)
+	AS
+	BEGIN
+		INSERT INTO Categoria (Titulo)
+		VALUES (@titulo);
+	END
+
+CREATE PROCEDURE spInsertar_Usuario
+    @nombre VARCHAR(50),
+    @email VARCHAR(100),
+	@foto image,
+	@fecha_registro date
+	AS
+	BEGIN
+		INSERT INTO Usuario (Nombre, Email,Foto,Fecha_Registro)
+		VALUES (@nombre, @email,@foto,@fecha_registro);
+	END
+
+CREATE PROCEDURE spInsertar_Login
+    @idUsuario INT,
+    @usuario VARCHAR(50),
+    @contrasena VARCHAR(50)
+	AS
+	BEGIN
+		INSERT INTO Login (idUsuario, Usuario, Contraseña)
+		VALUES (@idUsuario, @usuario, @contrasena);
+	END
+
+
+-- Procedimientos para Editar
+
+CREATE PROCEDURE spEditar_Nota
+    @idNota INT,
+    @idCategoria INT,
+	@fecha_creacion datetime,
+    @titulo VARCHAR(100),
+    @comentario VARCHAR(MAX)
+	AS
+	BEGIN
+		UPDATE Nota
+		SET idCategoria = @idCategoria,Fecha_Creacion=@fecha_creacion, Titulo = @titulo, Comentario = @comentario
+		WHERE idNota = @idNota;
+	END
+
+CREATE PROCEDURE spEditar_Detalle_Nota
+    @idDetalle_Nota INT,
+    @descripcion VARCHAR(100),
+    @imagen image,
+	@fecha datetime
+	AS
+	BEGIN
+		UPDATE Detalle_Nota
+		SET Descripcion = @descripcion,Imagen=@imagen, @fecha = @fecha
+		WHERE idDetalle_Nota = @idDetalle_Nota;
+	END
+
+
+-- spEditar_DetalleNota (Puedes definirlo si deseas permitir la edición del detalle de una nota)
+
+CREATE PROCEDURE spEditar_Categoria
+    @idCategoria INT,
+    @titulo VARCHAR(50)
+	AS
+	BEGIN
+		UPDATE Categoria
+		SET Titulo = @titulo
+		WHERE idCategoria = @idCategoria;
+	END
+
+CREATE PROCEDURE spEditar_Usuario
+    @idUsuario INT,
+    @nombre VARCHAR(100),
+    @email VARCHAR(150),
+	@foto image
+	AS
+	BEGIN
+		UPDATE Usuario
+		SET Nombre = @nombre, Email = @email,Foto=@foto
+		WHERE idUsuario = @idUsuario;
+	END
+
+CREATE PROCEDURE spEditar_Login
+    @idLogin INT,
+    @usuario VARCHAR(50),
+    @contraseña VARCHAR(50)
+	AS
+	BEGIN
+		UPDATE Login
+		SET Usuario = @usuario, Contraseña = @contraseña
+		WHERE idLogin = @idLogin;
+	END
+
+
+-- Procedimientos para Eliminar
+
+CREATE PROCEDURE spEliminar_Nota
+    @idNota INT
+	AS
+	BEGIN
+		DELETE FROM Nota
+		WHERE idNota = @idNota;
+	END
+
+CREATE PROCEDURE spEliminar_DetalleNota
+    @idDetalle_Nota INT
+	AS
+	BEGIN
+		DELETE FROM Detalle_Nota
+		WHERE idDetalle_Nota = @idDetalle_Nota;
+	END
+
+CREATE PROCEDURE spEliminar_Categoria
+    @idCategoria INT
+	AS
+	BEGIN
+		DELETE FROM Categoria
+		WHERE idCategoria = @idCategoria;
+	END
+
+CREATE PROCEDURE spEliminar_Usuario
+    @idUsuario INT
+	AS
+	BEGIN
+		DELETE FROM Usuario
+		WHERE idUsuario = @idUsuario;
+	END
+
+CREATE PROCEDURE spEliminar_Login
+    @idLogin INT
+	AS
+	BEGIN
+		DELETE FROM Login
+		WHERE idLogin = @idLogin;
+	END

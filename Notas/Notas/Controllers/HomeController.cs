@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Notas.Models;
-using System.Diagnostics;
+using System.Diagnostics; 
+using System.Reflection;
 
 namespace Notas.Controllers
 {
@@ -17,6 +18,7 @@ namespace Notas.Controllers
         {
             return View();
         }
+
 
         public IActionResult Privacy()
         {

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kraken\\Documents\\Proyectos\\C#\\Notas CRUD\\Notas\\Notas\\Notas.csproj": {}
+    "X:\\C#\\Notas\\Notas Aspnet\\Notas - copia\\Notas\\Notas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kraken\\Documents\\Proyectos\\C#\\Notas CRUD\\Notas\\Notas\\Notas.csproj": {
+    "X:\\C#\\Notas\\Notas Aspnet\\Notas - copia\\Notas\\Notas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kraken\\Documents\\Proyectos\\C#\\Notas CRUD\\Notas\\Notas\\Notas.csproj",
+        "projectUniqueName": "X:\\C#\\Notas\\Notas Aspnet\\Notas - copia\\Notas\\Notas.csproj",
         "projectName": "Notas",
-        "projectPath": "C:\\Users\\Kraken\\Documents\\Proyectos\\C#\\Notas CRUD\\Notas\\Notas\\Notas.csproj",
+        "projectPath": "X:\\C#\\Notas\\Notas Aspnet\\Notas - copia\\Notas\\Notas.csproj",
         "packagesPath": "C:\\Users\\Kraken\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kraken\\Documents\\Proyectos\\C#\\Notas CRUD\\Notas\\Notas\\obj\\",
+        "outputPath": "X:\\C#\\Notas\\Notas Aspnet\\Notas - copia\\Notas\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,6 +45,20 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
