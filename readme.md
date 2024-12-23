@@ -76,7 +76,6 @@ Con el modelo de datos adecuado, podrás aprovechar todas estas características
 - **Herramientas**: Git, GitHub, .NET CLI
 - **Power BI**: Proximamente se incorporaran metricas dinamicas con PBI
 
-*(Modifica esta sección según las tecnologías exactas que uses en tu repositorio.)*
 
 ---
 
