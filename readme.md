@@ -42,7 +42,6 @@ Este proyecto hace uso del **patrón MVC (Modelo - Vista - Controlador)** propio
 3. **Controladores (Controllers)**:
    - Reciben las peticiones (requests) del usuario, procesan la lógica necesaria (usando los modelos) y devuelven las vistas apropiadas.
 
-Adicionalmente, se puede incorporar una base de datos (por ejemplo, **SQL Server** o **SQLite**) para almacenar las notas/tickets de manera persistente. En ese caso, se utilizan **Entity Framework** o **Dapper** como ORM (si así se ha configurado el proyecto).
 
 ---
 
@@ -70,9 +69,8 @@ Con el modelo de datos adecuado, podrás aprovechar todas estas características
 ## Tecnologías utilizadas
 - **Lenguaje**: C#  
 - **Framework**: ASP.NET MVC  
-- **ORM (opcional)**: Entity Framework / Dapper (según configuración)  
-- **Base de datos**: SQL Server / SQLite (puedes ajustar según tu configuración)  
-- **IDE**: Visual Studio / Visual Studio Code (recomendado para depuración y desarrollo)  
+- **Base de datos**: SQL Server
+- **IDE**: Visual Studio 
 - **Herramientas**: Git, GitHub, .NET CLI
 - **Power BI**: Proximamente se incorporaran metricas dinamicas con PBI
 
